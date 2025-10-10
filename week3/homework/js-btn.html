@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morning Notes</title>
+    <style>
+        header, main, footer{
+            height:300px;
+        }
+    </style>
+</head>
+<body>
+    <header id="myHeader">
+        <button id="colorBtn">Ramdon color!</button>
+        <button id="imgBtn">Change image!</button>
+    </header>
+
+    <main id="myMainElem">
+        <img src="images/inspiration.webp" alt="inspiration" id="mainImg">
+    </main>
+
+    <footer>
+
+    </footer>
+    <script>
+        let mainE = document.getElementById("myMainElem") 
+        let clrButton = document.getElementById("colorBtn")
+
+        mainE.innerHTML="<h1>Hello World!</h1>"
+
+        clrButton.addEventListener("click", function(){
+            let valueR = Math.floor ( Math.random() * 255 )
+            let valueG = Math.floor ( Math.random() * 255 )
+            let valueB = Math.floor ( Math.random() * 255 )
+
+            console.log("Red: " + valueR)
+            console.log("Green: " + valueG)
+            console.log("Blue: " + valueB)
+
+
+            mainE.style.backgroundColor = "rgb( " + valueR + ", " + valueG + ", " + valueB + ")"
+        })
+    </script>
+</body>
+</html>
