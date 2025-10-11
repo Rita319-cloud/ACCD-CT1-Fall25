@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Morning Notes</title>
     <style>
-        header, main, footer{
-            height:300px;
+        img{
+            max-width: 100%;
         }
     </style>
 </head>
@@ -17,7 +17,7 @@
     </header>
 
     <main id="myMainElem">
-        <img src="images/inspiration.webp" alt="inspiration" id="mainImg">
+        <img src="images/111.jpg" alt="Shell" id="mainImg">
     </main>
 
     <footer>
@@ -26,8 +26,29 @@
     <script>
         let mainE = document.getElementById("myMainElem") 
         let clrButton = document.getElementById("colorBtn")
+        let imgButton = document.getElementById("imgBtn")
+        let mainI = document.getElementById("mainImg")
 
-        mainE.innerHTML="<h1>Hello World!</h1>"
+        //mainE.innerHTML="<h1>Hello World!</h1>"
+
+        let newHeader = document.createElement("h1")
+        newHeader.textContent = "The world is your oyster"
+        mainE.insertBefore(newHeader, mainI)
+
+        function changeImage(){
+            console.log(mainI.src)
+
+            if(mainI.src.includes("111") ){
+                console.log("Changing to 222")
+                mainI.src = "images/222.jpg"
+            }
+            else{
+                console.log("Changing to 111")
+                mainI.src = "images/111.jpg"
+            }
+        }
+
+        imgButton.addEventListener("click", changeImage)
 
         clrButton.addEventListener("click", function(){
             let valueR = Math.floor ( Math.random() * 255 )
