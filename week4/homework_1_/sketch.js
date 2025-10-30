@@ -31,7 +31,6 @@ function setup() {
 
 function draw() {
   background(0, 0, 85)
-
   let noiseVX = map(noise(noiseOffsetX), 0, 1, -2, 2)
   let noiseVY = map(noise(noiseOffsetY), 0, 1, -2, 2)
 
@@ -41,25 +40,48 @@ function draw() {
   noiseOffsetX += 0.01
   noiseOffsetY += 0.01
 
-  if (posY + radius >= height || posY - radius <= 0) {
+  console.log(bounceSound.isPlaying())
+
+  if (posY + radius * 1.5 >= height || posY - radius * 1.5<= 0) {
     velY *= -1
-    if (bounceSound.isLoaded()) bounceSound.play()
+    
+    if (bounceSound.isLoaded() && !bounceSound.isPlaying()) {
+      console.log("play sound")
+      bounceSound.play()
+    }
   }
-  if (posX + radius >= width || posX - radius <= 0) {
+  // else {
+  //   bounceSound.stop()
+  // }
+  if (posX + radius * 1.5 >= width || posX - radius * 1.5 <= 0) {
     velX *= -1
-    if (bounceSound.isLoaded()) bounceSound.play()
+    if (bounceSound.isLoaded() && !bounceSound.isPlaying()) {
+      console.log("play sound")
+      bounceSound.play()
+    }
   }
 
   if (img) {
     imageMode(CENTER)
     image(img, posX, posY, radius * 3, radius * 3)
-  } else {
-    fill(posX, 100, 100)
-    circle(posX, posY, radius * 2)
-  }
+
+    strokeWeight(2)
+    noFill()
+    rectMode(CENTER)
+    rect(posX, posY, radius * 3, radius * 3)
+  } 
+  // else {
+  //   fill(posX, 100, 100)
+  //   circle(posX, posY, radius * 2)
+  // }
 
   stroke(255, 0, 0)
   strokeWeight(18)
   fill(width * 0.75, 100, 100)
   rect(width * 0.5 - 50, height * 0.5 - 50, 100, 100)
+}
+
+
+function mousePressed() {
+  userStartAudio();
 }
