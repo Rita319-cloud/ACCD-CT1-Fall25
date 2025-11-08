@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sakura Garden</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>🌸 Sakura Garden 🐝</h1>
+  <main>
+    <!-- Canvas 容器 -->
+    <div id="canvas-wrapper"></div>
+
+    <!-- Flower Size Slider -->
+    <div class="controls">
+      <label for="sizeSlider">Sakura Size:</label>
+      <input type="range" id="sizeSlider" min="20" max="80" value="40" />
+    </div>
+
+    <!-- UML Diagram  -->
+    <section id="uml-section">
+      <h2>Sakura Garden UML</h2>
+      <img src="uml_diagram.png" alt="UML Diagram" />
+    </section>
+
+    <!-- Intent and process -->
+    <section id="intent">
+      <h2>Intent & Process</h2>
+      <p>
+        The Sakura Garden System simulates the natural interaction between sakura and bees in a simple environment. Each sakura grows gradually while bees move across the sakura. Users can click to add new sakura and adjust their initial size using the slider.
+      </p>
+      <p>
+        I want to create a poetic visualization inspired by springtime. The process involved designing the system’s basic components, Sakura and Bee classes, and also defining their behaviors.
+      </p>
+      <p>
+        The UML diagram above illustrates the relationships between classes, highlighting how flowers and bees coexist and interact within the system.
+      </p>
+      <div class="process-image">
+        <img src="1.png" alt="process 1"/>
+        <img src="2.png" alt="process 2"/>
+        <img src="3.png" alt="process 3"/>
+        <img src="4.png" alt="process 4"/>
+      </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="classes.js"></script>
+    <script src="sketch.js"></script>
+  </main>
+</body>
+</html>

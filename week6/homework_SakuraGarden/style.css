@@ -1,0 +1,59 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 20px;
+  background: rgb(255,255,255);
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#canvas-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+canvas {
+  border: 1px solid #ccc;
+}
+
+.controls {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#uml-section,
+#intent {
+  text-align: left;
+  max-width: 800px;
+  align-self: flex-start;
+  margin-top: 60px;
+}
+
+#uml-section img {
+  max-width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: block;
+}
+
+#intent .process-image img {
+  max-width: 100%;
+  display: block;
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
