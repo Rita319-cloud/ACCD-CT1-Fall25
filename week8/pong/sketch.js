@@ -5,13 +5,15 @@ let hands = [];
 let thumbTip, indexTip;
 
 let paddle, pong, score;
+let bounceSound;
 
 function preload() {
   handPose = ml5.handPose({ flipped: true });
+  bounceSound = loadSound("sound.mp3");
 }
 
 function setup() {
-  createCanvas(640, 500);
+  createCanvas(640, 480);
 
   video = createCapture(VIDEO, { flipped: true });
   video.size(640, 480);
@@ -60,6 +62,7 @@ function draw() {
       pong.pos.y + pong.radius <= paddle.y2
     ) {
       pong.vel.x *= -1;
+      bounceSound.play();
       score++;
       console.log(score);
     }
