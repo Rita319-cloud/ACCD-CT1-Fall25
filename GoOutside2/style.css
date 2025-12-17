@@ -39,11 +39,11 @@ body{
 .btn{
   border: 0;
   border-radius: 999px;
-  padding: 12px 18px;
+  padding: 10px 18px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  background: #111;
+  background: #111111;
   color: #fff;
 }
 
