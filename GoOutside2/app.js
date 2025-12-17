@@ -53,7 +53,7 @@ async function init() {
 
     // ✅ mobile-first：canvas 尺寸由容器控制，这里给一个合理的内部分辨率
     const flip = false; // 后置摄像头不镜像
-    webcam = new tmImage.Webcam(640, 640, flip);
+    webcam = new tmImage.Webcam(350, 350, flip);
 
     await webcam.setup({ facingMode: "environment" });
     await webcam.play();
