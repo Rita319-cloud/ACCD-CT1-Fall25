@@ -3,36 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Teachable Machine Image Model</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <title>Teachable Machine</title>
+  <link rel="stylesheet" href="style.css?v=1" />
 </head>
 <body>
   <main class="app">
-    <h1 class="title">Go Outside</h1>
+    <h1 class="title">Lets Go Outside</h1>
 
     <div class="controls">
       <button id="startBtn" class="btn" type="button">Start</button>
     </div>
 
     <section class="card">
+      <!-- ✅ 关键：必须有 class="webcam-wrap" -->
       <div id="webcam-container" class="webcam-wrap"></div>
     </section>
 
     <section class="card">
-      <div class="labels-head">
-        <span class="labels-title">Labels</span>
-      </div>
-
-      <div id="label-container" class="labels">
-        <!-- JS 会在这里生成 3 行 -->
-      </div>
+      <div id="label-container" class="labels"></div>
     </section>
-
-    <p class="hint">Tip: Use your phone and tap “Start”.</p>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-  <script src="app.js"></script>
+  <script src="app.js?v=1"></script>
 </body>
 </html>

@@ -1,3 +1,9 @@
+const LABEL_MAP = {
+  "Tree": "I found a tree 🌲",
+  "Fountain": "I found a fountain ⛲",
+  "Not outside": "Not outside"
+};
+
 const URL = "https://teachablemachine.withgoogle.com/models/UlZM__5Sy/";
 
 let model, webcam, maxPredictions;
@@ -21,7 +27,7 @@ function makeLabelRows(classNames) {
 
     const left = document.createElement("div");
     left.className = "label-name";
-    left.textContent = name;
+    left.textContent = LABEL_MAP[name] || name;
 
     const right = document.createElement("div");
     right.className = "label-val";
@@ -43,16 +49,13 @@ async function init() {
     model = await tmImage.load(modelURL, metadataURL);
     maxPredictions = model.getTotalClasses();
 
-    // 从 metadata 拿到 class names（更保险）
     const classNames =
       model.getClassLabels?.() ||
       Array.from({ length: maxPredictions }, (_, i) => `Class ${i + 1}`);
 
-    // ✅ 生成固定的 label 行（比如 Tree / Fountain / Not outside）
     makeLabelRows(classNames);
 
-    // ✅ mobile-first：canvas 尺寸由容器控制，这里给一个合理的内部分辨率
-    const flip = false; // 后置摄像头不镜像
+    const flip = false;
     webcam = new tmImage.Webcam(640, 640, flip);
 
     await webcam.setup({ facingMode: "environment" });
@@ -61,6 +64,9 @@ async function init() {
     const webcamContainer = document.getElementById("webcam-container");
     webcamContainer.innerHTML = "";
     webcamContainer.appendChild(webcam.canvas);
+
+    // ✅ 强制 canvas 是块级（有些浏览器更稳）
+    webcam.canvas.style.display = "block";
 
     window.requestAnimationFrame(loop);
   } catch (err) {
@@ -79,9 +85,8 @@ async function loop() {
 
 async function predict() {
   const prediction = await model.predict(webcam.canvas);
-
-  // labelContainer 里每行是 .label-row，第二个子元素是数值
   const rows = labelContainer.querySelectorAll(".label-row");
+
   for (let i = 0; i < prediction.length && i < rows.length; i++) {
     const valEl = rows[i].querySelector(".label-val");
     valEl.textContent = prediction[i].probability.toFixed(2);
